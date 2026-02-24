@@ -101,7 +101,7 @@ struct CoursesNextUpWidgetEntryView: View {
 
     var body: some View {
         switch widgetFamily {
-        case .systemSmall: CoursesNextUpSmallView(entry: entry)
+        case .systemSmall, .systemMedium: CoursesNextUpSmallView(entry: entry)
         case .accessoryRectangular: CoursesNextUpViewLockScreenView(entry: entry)
         default: EmptyView()
         }
@@ -122,7 +122,7 @@ struct CoursesNextUpWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             CoursesNextUpWidgetEntryView(entry: entry)
         }.configurationDisplayName("Next Up").description("顯示下一堂課").supportedFamilies([
-            .systemSmall, .accessoryRectangular,
+            .systemSmall, .systemMedium, .accessoryRectangular,
         ])
     }
 }
